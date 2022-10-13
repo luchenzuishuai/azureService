@@ -1,0 +1,33 @@
+server:
+  port: 8081
+
+
+spring:
+  datasource:
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: jdbc:sqlserver://lcsqldbserver.database.windows.net:1433;database=firstdb;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
+    username: adminDB@lcsqldbserver
+    password: admin123.
+
+mybatis-plus:
+  mapper-locations: classpath:com/zfbt/mapper/*.xml   # 配置mapper映射文件所在位置
+  type-aliases-package: com.neu.azuresql.pojo.po    # 为实体类包下的所有类注册别名
+  # 打印mybatis日志
+  configuration:
+    # 开启数据库下划线到Java类名驼峰命名法的转换
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.log4j2.Log4j2Impl
+  global-config:
+    banner: off   # 关闭mybatis-plus的banner
+
+
+knife4j:
+  enable: true
+  setting:
+    swaggerModelName: POJO
+    enableVersion: true
+    enableReloadCacheParameter: true
+    enableFooter: false
+    enableDynamicParameter: true
+    enableOpenApi: false
+  production: false
